@@ -1,17 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+
+import './styles.css'
+
+import Pedido from "./CArRiNHO1/comunicacaoComps/finalizacaoPedido/pedido";
+import ConclusaoPedido from "./CArRiNHO1/comunicacaoComps/finalizacaoPedido/conclusao";
+
+
+import Contador from "./CArRiNHO1/comunicacaoComps/contador";
+
+
+//import App from "./infoA/destiny";
+//import App from "./infoB/amaze";
+import App from './CArRiNHO1/casa'
+import DetalheProduto from './CArRiNHO1/detalheProduto'
+import Carrinho from './CArRiNHO1/carrinho'
+
+
+
+
+const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  <StrictMode>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact={true} component={App} />
+        <Route path="/detalhe" component={DetalheProduto} />
+        <Route path="/carrinho" component={Carrinho} />
+        <Route path="/infoX/contador" exact={true} component={Contador} />
+        <Route path="/infoX/pedido" component={Pedido} />
+        <Route path="/infoX/conclusao" component={ConclusaoPedido} />
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+      </Switch>
+    </BrowserRouter>
+  </StrictMode>,
+  rootElement
+);
